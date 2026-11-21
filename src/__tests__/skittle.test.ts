@@ -12,4 +12,11 @@ describe("Skittle", () => {
     assert(zero);
     assert(thirteen);
   });
+
+  it("number は Skittle に代入できない", () => {
+    // @ts-expect-error number は Skittle ではない
+    const skittle: Skittle = 5;
+
+    assert(skittle);
+  });
 });
