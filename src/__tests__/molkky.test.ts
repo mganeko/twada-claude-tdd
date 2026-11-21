@@ -23,7 +23,20 @@ describe("pointsOf: 2本以上倒した場合", () => {
 
     assert(pointsOf(thrown) === 2);
   });
+
+  it("1番・2番・3番のスキットルを倒すと3点(倒した本数)", () => {
+    const thrown: Throw = [{ number: 1 }, { number: 2 }, { number: 3 }];
+
+    assert(pointsOf(thrown) === 3);
+  });
 });
+
+describe("pointsOf: 1本も倒さなかった場合", () => {
+  it("1本も倒さなければ0点", () => {
+    const thrown: Throw = [];
+
+    assert(pointsOf(thrown) === 0);
+  });
 });
 
 describe("pointsOf: 型", () => {
