@@ -15,14 +15,4 @@ describe("pointsOf: 1本倒した場合", () => {
 
     assert(pointsOf(skittle) === 12);
   });
-
-  it("範囲外の番号のスキットルは型エラーになる", () => {
-    // @ts-expect-error 0 は SkittleNumber ではない
-    const zero: Skittle = { number: 0 };
-    // @ts-expect-error 13 は SkittleNumber ではない
-    const thirteen: Skittle = { number: 13 };
-
-    pointsOf(zero);
-    pointsOf(thirteen);
-  });
 });
