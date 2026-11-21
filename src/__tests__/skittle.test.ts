@@ -19,4 +19,13 @@ describe("Skittle", () => {
 
     assert(skittle);
   });
+
+  it("Skittle は number に代入できない", () => {
+    const skittle: Skittle = { number: 5 };
+
+    // @ts-expect-error Skittle は number ではない
+    const value: number = skittle;
+
+    assert(value);
+  });
 });
