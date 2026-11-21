@@ -35,4 +35,13 @@ describe("Skittle", () => {
 
     assert(points === 5);
   });
+
+  it("Skittle 同士の足し算はできない", () => {
+    const skittle: Skittle = { number: 5 };
+
+    // @ts-expect-error Skittle に + 演算子は使えない
+    const sum = skittle + skittle;
+
+    assert(sum);
+  });
 });
