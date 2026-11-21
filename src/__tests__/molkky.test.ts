@@ -15,4 +15,11 @@ describe("pointsOf: 1本倒した場合", () => {
 
     assert(pointsOf(skittle) === 12);
   });
+
+  it("pointsOf に number を渡せない", () => {
+    // @ts-expect-error number は Skittle ではない
+    const call = () => pointsOf(5);
+
+    assert(call);
+  });
 });

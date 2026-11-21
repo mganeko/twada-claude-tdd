@@ -1,6 +1,5 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { pointsOf } from "../molkky.ts";
 import type { Skittle } from "../skittle.ts";
 
 describe("Skittle", () => {
@@ -28,13 +27,6 @@ describe("Skittle", () => {
     const value: number = skittle;
 
     assert(value);
-  });
-
-  it("pointsOf に number を渡せない", () => {
-    // @ts-expect-error number は Skittle ではない
-    const call = () => pointsOf(5);
-
-    assert(call);
   });
 
   it("Skittle 同士の足し算はできない", () => {
