@@ -7,15 +7,17 @@ describe("pointsOf: 1本倒した場合", () => {
   it("5番のスキットルを倒すと5点", () => {
     const skittle: Skittle = { number: 5 };
 
-    assert(pointsOf(skittle) === 5);
+    assert(pointsOf([skittle]) === 5);
   });
 
   it("12番のスキットルを倒すと12点", () => {
     const skittle: Skittle = { number: 12 };
 
-    assert(pointsOf(skittle) === 12);
+    assert(pointsOf([skittle]) === 12);
   });
+});
 
+describe("pointsOf: 型", () => {
   it("pointsOf に number を渡せない", () => {
     // @ts-expect-error number は Skittle ではない
     const call = () => pointsOf(5);
