@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { pointsOf } from "../molkky.ts";
+import { pointsOf, type Throw } from "../molkky.ts";
 import type { Skittle } from "../skittle.ts";
 
 describe("pointsOf: 1本倒した場合", () => {
@@ -15,6 +15,15 @@ describe("pointsOf: 1本倒した場合", () => {
 
     assert(pointsOf([skittle]) === 12);
   });
+});
+
+describe("pointsOf: 2本以上倒した場合", () => {
+  it("5番と8番のスキットルを倒すと2点(倒した本数)", () => {
+    const thrown: Throw = [{ number: 5 }, { number: 8 }];
+
+    assert(pointsOf(thrown) === 2);
+  });
+});
 });
 
 describe("pointsOf: 型", () => {
