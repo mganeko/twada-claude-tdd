@@ -28,4 +28,11 @@ describe("Skittle", () => {
 
     assert(value);
   });
+
+  it("pointsOf に number を渡せない", () => {
+    // @ts-expect-error number は Skittle ではない
+    const points = pointsOf(5);
+
+    assert(points === 5);
+  });
 });
