@@ -5,6 +5,6 @@ export type Points = number;
 export type Throw = readonly Skittle[];
 
 export const pointsOf = (thrown: Throw): Points => {
-  const [skittle] = thrown;
-  return thrown.length === 1 && skittle !== undefined ? skittle.number : thrown.length;
+  const [only, ...rest] = thrown;
+  return only !== undefined && rest.length === 0 ? only.number : thrown.length;
 };
