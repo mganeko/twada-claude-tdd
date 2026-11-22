@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { pointsOf, type Throw } from "../molkky.ts";
+import { pointsOf, scoreOf, type Throw } from "../molkky.ts";
 import type { Skittle } from "../skittle.ts";
 
 describe("pointsOf: 1本倒した場合", () => {
@@ -50,6 +50,14 @@ describe("pointsOf: 同じ番号のスキットルが重複した場合", () => 
     const thrown: Throw = [{ number: 5 }, { number: 8 }, { number: 5 }];
 
     assert.throws(() => pointsOf(thrown), assert.AssertionError);
+  });
+});
+
+describe("scoreOf: 投てきの履歴から得点を求める", () => {
+  it("1回も投てきしていないときは0点", () => {
+    const throws: readonly Throw[] = [];
+
+    assert(scoreOf(throws) === 0);
   });
 });
 
