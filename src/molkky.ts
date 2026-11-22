@@ -15,4 +15,5 @@ export const pointsOf = (thrown: Throw): Points => {
   return only !== undefined && rest.length === 0 ? only.number : thrown.length;
 };
 
-export const scoreOf = (_throws: readonly Throw[]): Score => 0;
+export const scoreOf = (throws: readonly Throw[]): Score =>
+  throws.reduce((total, thrown) => total + pointsOf(thrown), 0);
