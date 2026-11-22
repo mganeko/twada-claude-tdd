@@ -53,6 +53,15 @@ describe("pointsOf: 同じ番号のスキットルが重複した場合", () => 
   });
 });
 
+describe("pointsOf: 型", () => {
+  it("pointsOf に number を渡せない", () => {
+    // @ts-expect-error number は Skittle ではない
+    const call = () => pointsOf(5);
+
+    assert(call);
+  });
+});
+
 describe("scoreOf: 投てきの履歴から得点を求める", () => {
   it("1回も投てきしていないときは0点", () => {
     const throws: readonly Throw[] = [];
@@ -94,15 +103,6 @@ describe("scoreOf: 投てきの履歴から得点を求める", () => {
     const throws: readonly Throw[] = [[], [{ number: 5 }]];
 
     assert(scoreOf(throws) === 5);
-  });
-});
-
-describe("pointsOf: 型", () => {
-  it("pointsOf に number を渡せない", () => {
-    // @ts-expect-error number は Skittle ではない
-    const call = () => pointsOf(5);
-
-    assert(call);
   });
 });
 
