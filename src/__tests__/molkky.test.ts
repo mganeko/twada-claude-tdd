@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { pointsOf, type Throw } from "../molkky.ts";
+import { pointsOf, scoreOf, type Throw } from "../molkky.ts";
 import type { Skittle } from "../skittle.ts";
 
 describe("pointsOf: 1本倒した場合", () => {
@@ -57,6 +57,61 @@ describe("pointsOf: 型", () => {
   it("pointsOf に number を渡せない", () => {
     // @ts-expect-error number は Skittle ではない
     const call = () => pointsOf(5);
+
+    assert(call);
+  });
+});
+
+describe("scoreOf: 投てきの履歴から得点を求める", () => {
+  it("1回も投てきしていないときは0点", () => {
+    const throws: readonly Throw[] = [];
+
+    assert(scoreOf(throws) === 0);
+  });
+
+  it("1回目に5番を1本倒すと5点", () => {
+    const throws: readonly Throw[] = [[{ number: 5 }]];
+
+    assert(scoreOf(throws) === 5);
+  });
+
+  it("1回目に5番を1本、2回目に11番を1本倒すと16点", () => {
+    const throws: readonly Throw[] = [[{ number: 5 }], [{ number: 11 }]];
+
+    assert(scoreOf(throws) === 16);
+  });
+
+  it("1回目に5番と8番を倒し(2点)、2回目に11番を1本倒す(11点)と13点", () => {
+    const throws: readonly Throw[] = [[{ number: 5 }, { number: 8 }], [{ number: 11 }]];
+
+    assert(scoreOf(throws) === 13);
+  });
+
+  it("別の投てきで同じ番号を倒しても、それぞれ点数になる(5番を2回で10点)", () => {
+    const throws: readonly Throw[] = [[{ number: 5 }], [{ number: 5 }]];
+
+    assert(scoreOf(throws) === 10);
+  });
+
+  it("1回投てきして1本も倒さなければ0点", () => {
+    const throws: readonly Throw[] = [[]];
+
+    assert(scoreOf(throws) === 0);
+  });
+
+  it("1本も倒さない投てきを挟んでも、ほかの投てきの点数が合計される", () => {
+    const throws: readonly Throw[] = [[], [{ number: 5 }]];
+
+    assert(scoreOf(throws) === 5);
+  });
+});
+
+describe("scoreOf: 型", () => {
+  it("scoreOf に投てき(Throw)を1つ渡せない", () => {
+    const thrown: Throw = [{ number: 5 }];
+
+    // @ts-expect-error Throw は readonly Throw[] ではない
+    const call = () => scoreOf(thrown);
 
     assert(call);
   });
