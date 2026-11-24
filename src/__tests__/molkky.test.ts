@@ -46,6 +46,15 @@ describe("pointsOf: 同じ番号のスキットルが重複した場合", () => 
     assert.throws(() => pointsOf(thrown), assert.AssertionError);
   });
 
+  it("アサーションエラーのメッセージで重複が原因だと分かる", () => {
+    const thrown: Throw = [{ number: 5 }, { number: 5 }];
+
+    assert.throws(() => pointsOf(thrown), {
+      name: "AssertionError",
+      message: "同じ番号のスキットルは重複できない",
+    });
+  });
+
   it("5番・8番・5番のように離れた位置の重複も想定外としてアサーションで落ちる", () => {
     const thrown: Throw = [{ number: 5 }, { number: 8 }, { number: 5 }];
 
