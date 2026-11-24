@@ -19,10 +19,12 @@
 
 ## コマンド
 
-| コマンド            | 内容                        |
-| ------------------- | --------------------------- |
-| `npm test`          | テスト実行 (type stripping) |
-| `npm run typecheck` | `tsc` による型チェック      |
-| `npm run lint`      | oxlint                      |
-| `npm run format`    | oxfmt で整形                |
-| `npm run check`     | 上記すべてを実行            |
+| コマンド                | 内容                                                                                               |
+| ----------------------- | -------------------------------------------------------------------------------------------------- |
+| `npm test`              | テスト実行 (type stripping)                                                                        |
+| `npm run typecheck`     | `tsc` による型チェック                                                                             |
+| `npm run lint`          | oxlint                                                                                             |
+| `npm run format`        | oxfmt で整形                                                                                       |
+| `npm run check`         | 上記すべてを実行                                                                                   |
+| `npm run test:coverage` | テスト実行とカバレッジ取得。行・分岐・関数 100% 未満で失敗 ([ADR 0011](adr/0011-code-coverage.md)) |
+| `npm run test:mutation` | mutation testing。mutation score 100% 未満で失敗 ([ADR 0012](adr/0012-mutation-testing.md))        |

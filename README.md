@@ -17,13 +17,15 @@ npm install
 
 ## コマンド
 
-| コマンド            | 内容                                     |
-| ------------------- | ---------------------------------------- |
-| `npm test`          | テスト実行 (type stripping)              |
-| `npm run typecheck` | `tsc` による型チェック                   |
-| `npm run lint`      | oxlint                                   |
-| `npm run format`    | oxfmt で整形                             |
-| `npm run check`     | 型チェック・lint・整形確認・テストを実行 |
+| コマンド                | 内容                                                                                           |
+| ----------------------- | ---------------------------------------------------------------------------------------------- |
+| `npm test`              | テスト実行 (type stripping)                                                                    |
+| `npm run typecheck`     | `tsc` による型チェック                                                                         |
+| `npm run lint`          | oxlint                                                                                         |
+| `npm run format`        | oxfmt で整形                                                                                   |
+| `npm run check`         | 型チェック・lint・整形確認・テストを実行                                                       |
+| `npm run test:coverage` | テスト実行とカバレッジ取得(100% 未満で失敗)                                                    |
+| `npm run test:mutation` | mutation testing(Stryker。mutation score 100% 未満で失敗。HTML レポートは `reports/mutation/`) |
 
 ## ドキュメント
 
