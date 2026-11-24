@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node --enable-source-maps --import @power-assert/node --test \"src/**/*.test.ts\"",
     "test:coverage": "node --enable-source-maps --import @power-assert/node --test --experimental-test-coverage --test-coverage-include=\"src/**\" --test-coverage-exclude=\"src/__tests__/**\" --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 \"src/**/*.test.ts\"",
+    "test:mutation": "stryker run",
     "typecheck": "tsc",
     "lint": "oxlint",
     "format": "oxfmt",
@@ -15,6 +16,8 @@
   "devDependencies": {
     "@power-assert/node": "^0.7.2",
     "@power-assert/runtime": "^0.3.2",
+    "@stryker-mutator/core": "^10.1.1",
+    "@stryker-mutator/tap-runner": "^10.1.1",
     "@types/node": "^26.6.6",
     "oxfmt": "^0.79.0",
     "oxlint": "^1.94.0",
