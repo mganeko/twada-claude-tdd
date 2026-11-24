@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "node --enable-source-maps --import @power-assert/node --test \"src/**/*.test.ts\"",
+    "test:coverage": "node --enable-source-maps --import @power-assert/node --test --experimental-test-coverage --test-coverage-include=\"src/**\" --test-coverage-exclude=\"src/__tests__/**\" --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 \"src/**/*.test.ts\"",
     "typecheck": "tsc",
     "lint": "oxlint",
     "format": "oxfmt",
