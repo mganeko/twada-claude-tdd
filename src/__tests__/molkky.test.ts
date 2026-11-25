@@ -132,4 +132,27 @@ describe("scoreHistoryOf: 各投てき終了時点の得点を求める", () => 
 
     assert.deepEqual(scoreHistoryOf(throws), []);
   });
+
+  it("1回目に5番を1本倒すと[5]", () => {
+    const throws: readonly Throw[] = [[{ number: 5 }]];
+
+    assert.deepEqual(scoreHistoryOf(throws), [5]);
+  });
+
+  it("お題の例: 5本、11番を1本、空振り、3本の順に投げると[5, 16, 16, 19]", () => {
+    const throws: readonly Throw[] = [
+      [{ number: 1 }, { number: 2 }, { number: 3 }, { number: 4 }, { number: 5 }],
+      [{ number: 11 }],
+      [],
+      [{ number: 7 }, { number: 8 }, { number: 9 }],
+    ];
+
+    assert.deepEqual(scoreHistoryOf(throws), [5, 16, 16, 19]);
+  });
+
+  it("最初の投てきで1本も倒さなければ、その時点の得点は0点", () => {
+    const throws: readonly Throw[] = [[], [{ number: 5 }]];
+
+    assert.deepEqual(scoreHistoryOf(throws), [0, 5]);
+  });
 });

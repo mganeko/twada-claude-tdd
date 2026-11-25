@@ -18,4 +18,5 @@ export const pointsOf = (thrown: Throw): Points => {
 export const scoreOf = (throws: readonly Throw[]): Score =>
   throws.reduce((total, thrown) => total + pointsOf(thrown), 0);
 
-export const scoreHistoryOf = (_throws: readonly Throw[]): readonly Score[] => [];
+export const scoreHistoryOf = (throws: readonly Throw[]): readonly Score[] =>
+  throws.map((_, index) => scoreOf(throws.slice(0, index + 1)));
