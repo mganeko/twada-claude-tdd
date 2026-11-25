@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { pointsOf, scoreOf, type Throw } from "../molkky.ts";
+import { pointsOf, scoreHistoryOf, scoreOf, type Throw } from "../molkky.ts";
 import type { Skittle } from "../skittle.ts";
 
 describe("pointsOf: 1本倒した場合", () => {
@@ -123,5 +123,13 @@ describe("scoreOf: 型", () => {
     const call = () => scoreOf(thrown);
 
     assert(call);
+  });
+});
+
+describe("scoreHistoryOf: 各投てき終了時点の得点を求める", () => {
+  it("1回も投てきしていないときは空", () => {
+    const throws: readonly Throw[] = [];
+
+    assert.deepEqual(scoreHistoryOf(throws), []);
   });
 });
