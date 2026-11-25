@@ -15,7 +15,7 @@
 ## ディレクトリ構成
 
 - `src/` ソースコード
-- `src/__tests__/` テストコード (`*.test.ts`)
+- `src/__tests__/` テストコード (`*.test.ts`)。例示のテストは `skittle.test.ts`・`molkky.test.ts`、プロパティのテスト([fast-check](https://fast-check.dev/)、[ADR 0015](adr/0015-property-based-testing.md))は `molkky.property.test.ts`
 - `docs/adr/` アーキテクチャ決定記録
 - `docs/architecture.md` 本ドキュメント
 
