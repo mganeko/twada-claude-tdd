@@ -156,3 +156,14 @@ describe("scoreHistoryOf: 各投てき終了時点の得点を求める", () => 
     assert.deepEqual(scoreHistoryOf(throws), [0, 5]);
   });
 });
+
+describe("scoreHistoryOf: 型", () => {
+  it("scoreHistoryOf に投てき(Throw)を1つ渡せない", () => {
+    const thrown: Throw = [{ number: 5 }];
+
+    // @ts-expect-error Throw は readonly Throw[] ではない
+    const call = () => scoreHistoryOf(thrown);
+
+    assert(call);
+  });
+});
