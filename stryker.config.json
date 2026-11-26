@@ -1,0 +1,13 @@
+{
+  "testRunner": "tap",
+  "tap": {
+    "nodeArgs": ["--enable-source-maps", "--import", "@power-assert/node", "--test-reporter=tap"],
+    "testFiles": ["src/**/*.test.ts"]
+  },
+  "mutate": ["src/**/*.ts", "!src/__tests__/**"],
+  "ignorePatterns": ["tsconfig.json", "docs", "reports", "coverage"],
+  "reporters": ["clear-text", "html"],
+  "htmlReporter": { "fileName": "reports/mutation/mutation.html" },
+  "coverageAnalysis": "off",
+  "thresholds": { "high": 100, "low": 100, "break": 100 }
+}
