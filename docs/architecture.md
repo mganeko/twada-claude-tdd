@@ -4,7 +4,8 @@
 
 ## ドメインモデル
 
-- `src/skittle.ts`: `SkittleNumber`(1〜12 のリテラル union)と `Skittle`(`{ readonly number: SkittleNumber }`)。範囲外の番号は型で防ぐ ([ADR 0006](adr/0006-skittle-model.md))
+- `src/skittle.ts`: `SkittleNumber`(1〜12 のリテラル union)、`Skittle`(`{ readonly number: SkittleNumber }` にブランドを付けた型で、リテラルでは作れない)、`skittleOf(value: SkittleNumber): Skittle`(`Skittle` を作る唯一の手段)
+  - 範囲外の番号は、型(`SkittleNumber`)で防ぐ。型を迂回された場合に備え、`skittleOf` が `node:assert` で整数かつ 1〜12 であることを表明する ([ADR 0006](adr/0006-skittle-model.md)、ファクトリと実行時の表明は [ADR 0014](adr/0014-skittle-of-factory.md) で置き換え)
 - `src/molkky.ts`: `Points`(`number` の別名)、`Throw`(`readonly Skittle[]` の別名で、1回の投てきで倒したスキットル)、`Score`(`number` の別名)、`pointsOf(thrown: Throw): Points`、`scoreOf(throws: readonly Throw[]): Score`、`scoreHistoryOf(throws: readonly Throw[]): readonly Score[]`
   - 点数の規則: 1本なら倒したスキットルの番号、それ以外(0本・2本以上)なら倒した本数 ([ADR 0007](adr/0007-points-and-points-of.md)、シグネチャは [ADR 0008](adr/0008-throw-type.md) で置き換え)
   - 同じ番号のスキットルが重複した `Throw` は想定外として、`node:assert` のアサーションで落とす ([ADR 0009](adr/0009-duplicate-skittles-are-unexpected.md))
@@ -14,7 +15,7 @@
 ## ディレクトリ構成
 
 - `src/` ソースコード
-- `src/__tests__/` テストコード (`*.test.ts`)
+- `src/__tests__/` テストコード (`*.test.ts`)。例示のテストは `skittle.test.ts`・`molkky.test.ts`、プロパティのテスト([fast-check](https://fast-check.dev/)、[ADR 0015](adr/0015-property-based-testing.md))は `molkky.property.test.ts`
 - `docs/adr/` アーキテクチャ決定記録
 - `docs/architecture.md` 本ドキュメント
 
